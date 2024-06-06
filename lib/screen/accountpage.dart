@@ -27,7 +27,24 @@ class _AccountPageState extends State<AccountPage> {
           child: Column(
             children: [
               const SizedBox(
-                height: 100,
+                height: 20,
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Icon(
+                      Icons.chevron_left_outlined,
+                      color: Colors.white,
+                      size: 40,
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 50,
               ),
               const Text(
                 'Profile !!',
@@ -183,7 +200,7 @@ class _AccountPageState extends State<AccountPage> {
                         const Spacer(),
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).pushNamed('otp');
+                            Navigator.of(context).pushReplacementNamed('/');
                           },
                           child: Container(
                             height: 65,
