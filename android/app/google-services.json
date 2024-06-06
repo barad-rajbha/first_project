@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "586138352365",
+    "project_id": "replicateui",
+    "storage_bucket": "replicateui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586138352365:android:e89b75084b5feb0dd7eae4",
+        "android_client_info": {
+          "package_name": "com.example.uireprika"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIfYeUqi5zyBmQBkScVhUYKK-cbkuObIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
