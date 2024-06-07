@@ -71,8 +71,8 @@ class _OtpPageState extends State<OtpPage> {
                 child: Container(
                   width: double.infinity,
                   height: 280,
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.7),
                       borderRadius: BorderRadius.all(Radius.circular(40))),
                   child: Padding(
                     padding: const EdgeInsets.only(

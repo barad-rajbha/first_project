@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 class UserData extends ChangeNotifier {
   File? picImage;
   TextEditingController number = TextEditingController();
+  TextEditingController verifynumber = TextEditingController();
   TextEditingController otp1 = TextEditingController();
   TextEditingController otp2 = TextEditingController();
   TextEditingController otp3 = TextEditingController();
@@ -14,6 +15,9 @@ class UserData extends ChangeNotifier {
   TextEditingController otp6 = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController city = TextEditingController();
+  TextEditingController state = TextEditingController();
 
   dynamic galleryimg() async {
     final ImagePicker picker = ImagePicker();

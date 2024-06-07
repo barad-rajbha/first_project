@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
 
+import '../firebase_helper/helper.dart';
+
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
 
@@ -13,6 +15,7 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     UserData providerdata = Provider.of<UserData>(context);
+
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -21,6 +24,24 @@ class _AccountPageState extends State<AccountPage> {
         ),
       ),
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: const Icon(
+              Icons.chevron_left_outlined,
+              color: Colors.white,
+              size: 40,
+            ),
+          ),
+          centerTitle: true,
+          title: Text(
+            'Profile !!',
+            style: TextStyle(fontSize: 35, color: Colors.white),
+          ),
+        ),
         // backgroundColor: Colors.transparent,
         backgroundColor: Colors.green.shade900.withOpacity(0.7),
         body: SingleChildScrollView(
@@ -29,52 +50,27 @@ class _AccountPageState extends State<AccountPage> {
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: const Icon(
-                      Icons.chevron_left_outlined,
-                      color: Colors.white,
-                      size: 40,
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              const Text(
-                'Profile !!',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 75,
-              ),
               Padding(
-                padding: const EdgeInsets.only(right: 20, left: 20),
+                padding: const EdgeInsets.only(right: 15, left: 15),
                 child: Container(
                   width: double.infinity,
-                  height: 600,
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(40))),
+                  height: 835,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.7),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(40),
+                    ),
+                  ),
                   child: Padding(
                     padding:
                         const EdgeInsets.only(top: 25, right: 30, left: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      // mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const SizedBox(
-                          height: 25,
+                        const Text(
+                          'Profile Photo',
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        const Text('Profile Photo'),
                         const SizedBox(
                           height: 10,
                         ),
@@ -97,7 +93,7 @@ class _AccountPageState extends State<AccountPage> {
                                         children: [
                                           InkWell(
                                             onTap: () {
-                                              providerdata.picImage;
+                                              providerdata.galleryimg();
                                             },
                                             child: CircleAvatar(
                                               radius: 30,
@@ -164,7 +160,10 @@ class _AccountPageState extends State<AccountPage> {
                         const SizedBox(
                           height: 10,
                         ),
-                        const Text('Name'),
+                        const Text(
+                          'Name',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         const SizedBox(
                           height: 5,
                         ),
@@ -182,7 +181,31 @@ class _AccountPageState extends State<AccountPage> {
                         const SizedBox(
                           height: 15,
                         ),
-                        const Text('Email'),
+                        const Text(
+                          'Number',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        TextField(
+                          controller: providerdata.verifynumber,
+                          keyboardType: TextInputType.streetAddress,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.phone),
+                            hintText: 'Enter your verify number...',
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.amber),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          'Email',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         const SizedBox(
                           height: 5,
                         ),
@@ -197,9 +220,79 @@ class _AccountPageState extends State<AccountPage> {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          'Address',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        TextField(
+                          controller: providerdata.address,
+                          keyboardType: TextInputType.streetAddress,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.location_on_outlined),
+                            hintText: 'Enter your address...',
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.amber),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          'City',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        TextField(
+                          controller: providerdata.city,
+                          keyboardType: TextInputType.streetAddress,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.location_city),
+                            hintText: 'Enter your city name...',
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.amber),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        const Text(
+                          'State',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        TextField(
+                          controller: providerdata.state,
+                          keyboardType: TextInputType.streetAddress,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.real_estate_agent_outlined),
+                            hintText: 'Enter your state...',
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.amber),
+                            ),
+                          ),
+                        ),
                         const Spacer(),
                         InkWell(
-                          onTap: () {
+                          onTap: () async {
+                            FireStoreData.fireStoreData.addData(
+                                providerdata.name.text.toString(),
+                                providerdata.verifynumber.text.toString(),
+                                providerdata.email.text.toString(),
+                                providerdata.address.text.toString(),
+                                providerdata.city.text.toString(),
+                                providerdata.state.text.toString());
                             Navigator.of(context).pushReplacementNamed('/');
                           },
                           child: Container(
@@ -210,7 +303,7 @@ class _AccountPageState extends State<AccountPage> {
                                 borderRadius: BorderRadius.circular(15)),
                             child: const Center(
                               child: Text(
-                                'Next',
+                                'Done',
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 17,

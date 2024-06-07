@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +7,11 @@ import 'package:uireprika/screen/accountpage.dart';
 import 'package:uireprika/screen/homepage.dart';
 import 'package:uireprika/screen/otppage.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  await WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
 }
 
@@ -29,9 +34,9 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          '/':(context) => HomePage(),
-          'otp':(context) => OtpPage(),
-          'account':(context) => AccountPage(),
+          '/': (context) => HomePage(),
+          'otp': (context) => OtpPage(),
+          'account': (context) => AccountPage(),
         },
       ),
     );
