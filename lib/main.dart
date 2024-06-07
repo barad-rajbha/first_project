@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => HomePage(),
-          'otp': (context) => OtpPage(),
+          'otp': (context) => OtpPage(verificationId: ''),
           'account': (context) => AccountPage(),
         },
       ),

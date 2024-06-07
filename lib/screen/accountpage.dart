@@ -293,6 +293,13 @@ class _AccountPageState extends State<AccountPage> {
                                 providerdata.address.text.toString(),
                                 providerdata.city.text.toString(),
                                 providerdata.state.text.toString());
+                            providerdata.name.clear();
+                            providerdata.number.clear();
+                            providerdata.email.clear();
+                            providerdata.address.clear();
+                            providerdata.city.clear();
+                            providerdata.state.clear();
+                            providerdata.picImage == null;
                             Navigator.of(context).pushReplacementNamed('/');
                           },
                           child: Container(

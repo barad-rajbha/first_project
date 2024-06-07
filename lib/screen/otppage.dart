@@ -1,10 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
 
 class OtpPage extends StatefulWidget {
-  const OtpPage({super.key});
+  String verificationId;
+
+  OtpPage({super.key, required this.verificationId});
 
   @override
   State<OtpPage> createState() => _OtpPageState();
@@ -95,8 +99,16 @@ class _OtpPageState extends State<OtpPage> {
                               height: 40,
                               width: 40,
                               child: TextField(
+                                onChanged: (value) {
+                                  FocusScope.of(context).nextFocus();
+                                },
+                                style:
+                                    Theme.of(context).textTheme.headlineLarge,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(1)
+                                ],
+                                textAlign: TextAlign.center,
                                 controller: otps.otp1,
-                                maxLength: 1,
                                 keyboardType: TextInputType.phone,
                                 decoration: const InputDecoration(
                                   hintStyle: TextStyle(fontSize: 40),
@@ -111,8 +123,16 @@ class _OtpPageState extends State<OtpPage> {
                               height: 40,
                               width: 40,
                               child: TextField(
+                                onChanged: (value) {
+                                  FocusScope.of(context).nextFocus();
+                                },
+                                style:
+                                    Theme.of(context).textTheme.headlineLarge,
                                 controller: otps.otp2,
-                                maxLength: 1,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(1)
+                                ],
+                                textAlign: TextAlign.center,
                                 keyboardType: TextInputType.phone,
                                 decoration: const InputDecoration(
                                   hintStyle: TextStyle(fontSize: 40),
@@ -127,8 +147,16 @@ class _OtpPageState extends State<OtpPage> {
                               height: 40,
                               width: 40,
                               child: TextField(
+                                onChanged: (value) {
+                                  FocusScope.of(context).nextFocus();
+                                },
+                                style:
+                                    Theme.of(context).textTheme.headlineLarge,
                                 controller: otps.otp3,
-                                maxLength: 1,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(1)
+                                ],
+                                textAlign: TextAlign.center,
                                 keyboardType: TextInputType.phone,
                                 decoration: const InputDecoration(
                                   hintStyle: TextStyle(fontSize: 40),
@@ -143,8 +171,16 @@ class _OtpPageState extends State<OtpPage> {
                               height: 40,
                               width: 40,
                               child: TextField(
+                                onChanged: (value) {
+                                  FocusScope.of(context).nextFocus();
+                                },
+                                style:
+                                    Theme.of(context).textTheme.headlineLarge,
                                 controller: otps.otp4,
-                                maxLength: 1,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(1)
+                                ],
+                                textAlign: TextAlign.center,
                                 keyboardType: TextInputType.phone,
                                 decoration: const InputDecoration(
                                   hintStyle: TextStyle(fontSize: 40),
@@ -159,8 +195,16 @@ class _OtpPageState extends State<OtpPage> {
                               height: 40,
                               width: 40,
                               child: TextField(
+                                onChanged: (value) {
+                                  FocusScope.of(context).nextFocus();
+                                },
+                                style:
+                                    Theme.of(context).textTheme.headlineLarge,
                                 controller: otps.otp5,
-                                maxLength: 1,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(1)
+                                ],
+                                textAlign: TextAlign.center,
                                 keyboardType: TextInputType.phone,
                                 decoration: const InputDecoration(
                                   hintStyle: TextStyle(fontSize: 40),
@@ -175,8 +219,16 @@ class _OtpPageState extends State<OtpPage> {
                               height: 40,
                               width: 40,
                               child: TextField(
+                                // onChanged: (value) {
+                                //   FocusScope.of(context).nextFocus();
+                                // },
+                                style:
+                                    Theme.of(context).textTheme.headlineLarge,
                                 controller: otps.otp6,
-                                maxLength: 1,
+                                inputFormatters: [
+                                  LengthLimitingTextInputFormatter(1)
+                                ],
+                                textAlign: TextAlign.center,
                                 keyboardType: TextInputType.phone,
                                 decoration: const InputDecoration(
                                   hintStyle: TextStyle(fontSize: 40),
@@ -217,9 +269,28 @@ class _OtpPageState extends State<OtpPage> {
                         ),
                         const Spacer(),
                         InkWell(
-                          onTap: () {
-                            Navigator.of(context)
-                                .pushReplacementNamed('account');
+                          onTap: () async {
+                            try {
+                              PhoneAuthCredential credential =
+                                  await PhoneAuthProvider.credential(
+                                      verificationId: widget.verificationId,
+                                      smsCode:
+                                          '${otps.otp1.text.toString() + otps.otp2.text.toString() + otps.otp3.text.toString() + otps.otp4.text.toString() + otps.otp5.text.toString() + otps.otp6.text.toString()}');
+                              FirebaseAuth.instance
+                                  .signInWithCredential(credential)
+                                  .then((value) {
+                                otps.otp1.clear();
+                                otps.otp2.clear();
+                                otps.otp3.clear();
+                                otps.otp4.clear();
+                                otps.otp5.clear();
+                                otps.otp6.clear();
+                                Navigator.of(context)
+                                    .pushReplacementNamed('account');
+                              });
+                            } catch (ex) {}
+                            // Navigator.of(context)
+                            //     .pushReplacementNamed('account');
                           },
                           child: Container(
                             height: 65,

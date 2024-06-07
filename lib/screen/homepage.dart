@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
+import 'package:uireprika/screen/otppage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -77,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.all(Radius.circular(40))),
                   child: Padding(
                     padding:
-                        const EdgeInsets.only(top: 25, right: 30, left: 30),
+                    const EdgeInsets.only(top: 25, right: 30, left: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // mainAxisAlignment: MainAxisAlignment.start,
@@ -102,8 +104,22 @@ class _HomePageState extends State<HomePage> {
                         ),
                         const Spacer(),
                         InkWell(
-                          onTap: () {
-                            Navigator.of(context).pushNamed('otp');
+                          onTap: () async {
+                            await FirebaseAuth.instance.verifyPhoneNumber(
+                                verificationCompleted:
+                                    (PhoneAuthCredential credential) {},
+                                verificationFailed:
+                                    (FirebaseAuthException ex) {},
+                                codeSent:
+                                    (String verificatoinid, int? resendtoken) {
+                                  Navigator.pushReplacement(context,
+                                      MaterialPageRoute(builder: (context) =>
+                                          OtpPage(
+                                              verificationId: verificatoinid),));
+                                },
+                                codeAutoRetrievalTimeout:
+                                    (String verificatoinId) {},
+                                phoneNumber: '+91 ${numberdata.number.text.toString()}');
                           },
                           child: Container(
                             height: 65,
