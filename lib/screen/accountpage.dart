@@ -189,7 +189,7 @@ class _AccountPageState extends State<AccountPage> {
                           height: 5,
                         ),
                         TextField(
-                          controller: providerdata.verifynumber,
+                          controller: providerdata.number,
                           keyboardType: TextInputType.streetAddress,
                           decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.phone),
@@ -288,7 +288,7 @@ class _AccountPageState extends State<AccountPage> {
                           onTap: () async {
                             FireStoreData.fireStoreData.addData(
                                 providerdata.name.text.toString(),
-                                providerdata.verifynumber.text.toString(),
+                                providerdata.number.text.toString(),
                                 providerdata.email.text.toString(),
                                 providerdata.address.text.toString(),
                                 providerdata.city.text.toString(),
