@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                   height: 280,
                   decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.7),
-                      borderRadius: BorderRadius.all(Radius.circular(40))),
+                      borderRadius: const BorderRadius.all(Radius.circular(40))),
                   child: Padding(
                     padding:
                     const EdgeInsets.only(top: 25, right: 30, left: 30),

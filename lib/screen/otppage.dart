@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -77,7 +79,7 @@ class _OtpPageState extends State<OtpPage> {
                   height: 280,
                   decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.7),
-                      borderRadius: BorderRadius.all(Radius.circular(40))),
+                      borderRadius: const BorderRadius.all(Radius.circular(40))),
                   child: Padding(
                     padding: const EdgeInsets.only(
                         top: 20, right: 30, bottom: 20, left: 30),
@@ -272,10 +274,10 @@ class _OtpPageState extends State<OtpPage> {
                           onTap: () async {
                             try {
                               PhoneAuthCredential credential =
-                                  await PhoneAuthProvider.credential(
+                                  PhoneAuthProvider.credential(
                                       verificationId: widget.verificationId,
                                       smsCode:
-                                          '${otps.otp1.text.toString() + otps.otp2.text.toString() + otps.otp3.text.toString() + otps.otp4.text.toString() + otps.otp5.text.toString() + otps.otp6.text.toString()}');
+                                          otps.otp1.text.toString() + otps.otp2.text.toString() + otps.otp3.text.toString() + otps.otp4.text.toString() + otps.otp5.text.toString() + otps.otp6.text.toString());
                               FirebaseAuth.instance
                                   .signInWithCredential(credential)
                                   .then((value) {
@@ -288,7 +290,9 @@ class _OtpPageState extends State<OtpPage> {
                                 Navigator.of(context)
                                     .pushReplacementNamed('account');
                               });
-                            } catch (ex) {}
+                            } catch (ex) {
+                              log('$ex');
+                            }
                             // Navigator.of(context)
                             //     .pushReplacementNamed('account');
                           },

@@ -37,7 +37,7 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ),
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'Profile !!',
             style: TextStyle(fontSize: 35, color: Colors.white),
           ),
@@ -57,7 +57,7 @@ class _AccountPageState extends State<AccountPage> {
                   height: 835,
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.7),
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(40),
                     ),
                   ),

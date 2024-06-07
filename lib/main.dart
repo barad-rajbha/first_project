@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
@@ -10,9 +9,9 @@ import 'package:uireprika/screen/otppage.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -34,9 +33,9 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          '/': (context) => HomePage(),
+          '/': (context) => const HomePage(),
           'otp': (context) => OtpPage(verificationId: ''),
-          'account': (context) => AccountPage(),
+          'account': (context) => const AccountPage(),
         },
       ),
     );
