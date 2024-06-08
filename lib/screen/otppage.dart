@@ -40,7 +40,7 @@ class _OtpPageState extends State<OtpPage> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed('/');
                     },
                     icon: const Icon(
                       Icons.chevron_left_outlined,
