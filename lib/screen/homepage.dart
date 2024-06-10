@@ -68,6 +68,9 @@ class _HomePageState extends State<HomePage> {
                                       image: AssetImage(
                                           'asset/img/complete (1).png'))),
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Text(
                               'Complete Delivery',
                               style: TextStyle(
@@ -103,6 +106,9 @@ class _HomePageState extends State<HomePage> {
                                   image: AssetImage('asset/img/preorder.png'),
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Text(
                               'Pending Delivery',
@@ -140,6 +146,9 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              height: 5,
+                            ),
                             Text(
                               'Cancel Delivery',
                               style: TextStyle(
@@ -175,6 +184,9 @@ class _HomePageState extends State<HomePage> {
                                   image: AssetImage('asset/img/return.png'),
                                 ),
                               ),
+                            ),
+                            SizedBox(
+                              height: 5,
                             ),
                             Text(
                               'Return Delivery',

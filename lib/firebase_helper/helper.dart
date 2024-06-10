@@ -47,7 +47,7 @@ class FireStoreData {
         email == '') {
       log('fill detail');
     } else {
-      await firestore.collection('user').doc(name).set({
+      await firestore.collection('user').doc(number).set({
         'name': name,
         'number': number,
         'email': email,
