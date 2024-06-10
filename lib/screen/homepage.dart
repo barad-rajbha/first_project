@@ -1,9 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
-import 'package:uireprika/controller/controller.dart';
-import 'package:uireprika/screen/otppage.dart';
+import 'package:uireprika/widgets/nevbar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,138 +11,1025 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    UserData numberdata = Provider.of<UserData>(context);
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.fill,
-          image: AssetImage('asset/img/bg.jpeg'),
+    return Scaffold(
+      bottomNavigationBar: nevbar(),
+      appBar: AppBar(
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pushNamed('order');
+            },
+            child: Container(
+                height: 20,
+                width: 20,
+                child: Image.asset('asset/img/bell.png')),
+          ),
+          SizedBox(
+            width: 10,
+          )
+        ],
+        title: Text('Dashboard'),
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.menu),
         ),
       ),
-      child: Scaffold(
-        // backgroundColor: Colors.transparent,
-        backgroundColor: Colors.green.shade900.withOpacity(0.7),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            Container(
+              height: 400,
+              width: double.infinity,
+              child: GridView(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2),
                 children: [
-                  const Spacer(),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Skip',
-                      style: TextStyle(
-                          fontSize: 17,
-                          color: Colors.white,
-                          letterSpacing: 1.5),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Card(
+                      elevation: 5,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFE4F2FD),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 75,
+                              width: 75,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'asset/img/complete (1).png'))),
+                            ),
+                            Text(
+                              'Complete Delivery',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                  fontSize: 17),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Card(
+                      elevation: 5,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFFDE7),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 75,
+                              width: 75,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('asset/img/preorder.png'),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'Pending Delivery',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                  fontSize: 17),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Card(
+                      elevation: 5,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFE7F6E9),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 75,
+                              width: 75,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('asset/img/cancel.png'),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'Cancel Delivery',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                  fontSize: 17),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Card(
+                      elevation: 5,
+                      child: Container(
+                        width: 150,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFBE4EC),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 75,
+                              width: 75,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage('asset/img/return.png'),
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'Return Delivery',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 1,
+                                  fontSize: 17),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 150,
-              ),
-              SizedBox(
-                height: 190,
-                width: 190,
-                child: Lottie.asset('asset/json/Animation - 1717589236584.json',
-                    repeat: false),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text(
-                'Welcome Back!',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(
-                height: 75,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 20, left: 20),
-                child: Container(
-                  width: double.infinity,
-                  height: 280,
-                  decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.7),
-                      borderRadius: const BorderRadius.all(Radius.circular(40))),
-                  child: Padding(
-                    padding:
-                    const EdgeInsets.only(top: 25, right: 30, left: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      // mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 25,
-                        ),
-                        const Text('Phone Number'),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        TextField(
-                          controller: numberdata.number,
-                          keyboardType: TextInputType.phone,
-                          decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.phone),
-                            hintText: 'number',
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.amber),
-                            ),
-                          ),
-                        ),
-                        const Spacer(),
-                        InkWell(
-                          onTap: () async {
-                            await FirebaseAuth.instance.verifyPhoneNumber(
-                                verificationCompleted:
-                                    (PhoneAuthCredential credential) {},
-                                verificationFailed:
-                                    (FirebaseAuthException ex) {},
-                                codeSent:
-                                    (String verificatoinid, int? resendtoken) {
-                                  Navigator.pushReplacement(context,
-                                      MaterialPageRoute(builder: (context) =>
-                                          OtpPage(
-                                              verificationId: verificatoinid),));
-                                },
-                                codeAutoRetrievalTimeout:
-                                    (String verificatoinId) {},
-                                phoneNumber: '+91 ${numberdata.number.text.toString()}');
-                          },
-                          child: Container(
-                            height: 65,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(15)),
-                            child: const Center(
-                              child: Text(
-                                'SEND OTP',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    letterSpacing: 1,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const Spacer()
-                      ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              'New Orders',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
                     ),
                   ),
-                ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
               ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Card(
+              elevation: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Container(
+                    height: 150,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('asset/img/1.png'),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Puma Shoes',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '📍 dr.yagnik road rajkot,360001\n⏱️ 03 jan 2022',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          children: [
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Accept',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Card(
+                              elevation: 5,
+                              child: Container(
+                                height: 40,
+                                width: 100,
+                                child: Center(
+                                    child: Text(
+                                  'Reject',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                      fontSize: 15),
+                                )),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(10)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+          ],
         ),
       ),
     );

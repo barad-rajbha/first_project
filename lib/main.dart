@@ -4,7 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
 import 'package:uireprika/screen/accountpage.dart';
 import 'package:uireprika/screen/homepage.dart';
+import 'package:uireprika/screen/order.dart';
+import 'package:uireprika/screen/welcomepage.dart';
 import 'package:uireprika/screen/otppage.dart';
+import 'package:uireprika/screen/spalesh.dart';
 
 import 'firebase_options.dart';
 
@@ -32,10 +35,14 @@ class _MyAppState extends State<MyApp> {
       ],
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
+        initialRoute: 'spalesh',
         routes: {
-          '/': (context) => const HomePage(),
+          '/': (context) => const WelcomePage(),
           'otp': (context) => OtpPage(verificationId: ''),
           'account': (context) => const AccountPage(),
+          'spalesh': (context) => const SpaleshPage(),
+          'home': (context) => const HomePage(),
+          'order': (context) => const OrderPage(),
         },
       ),
     );
