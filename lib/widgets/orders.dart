@@ -30,7 +30,7 @@ class _OrdersState extends State<Orders> {
               ),
             ),
             SizedBox(
-              width:  displaywidth * 0.015,
+              width: displaywidth * 0.015,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -38,7 +38,7 @@ class _OrdersState extends State<Orders> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height:  displaywidth * 0.005,
+                    height: displaywidth * 0.005,
                   ),
                   Text(
                     'Puma Shoes',
@@ -49,7 +49,7 @@ class _OrdersState extends State<Orders> {
                     style: TextStyle(fontSize: 15),
                   ),
                   SizedBox(
-                    height:  displaywidth * 0.005,
+                    height: displaywidth * 0.005,
                   ),
                   Row(
                     children: [
@@ -59,20 +59,21 @@ class _OrdersState extends State<Orders> {
                           height: displaywidth * 0.040,
                           width: displaywidth * 0.110,
                           child: Center(
-                              child: Text(
-                            'Accept',
-                            style: TextStyle(
-                                color: Colors.white,
-                                letterSpacing: 1,
-                                fontSize: 15),
-                          )),
+                            child: Text(
+                              'Accept',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  letterSpacing: 1,
+                                  fontSize: 15),
+                            ),
+                          ),
                           decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(10)),
                         ),
                       ),
                       SizedBox(
-                        width:  displaywidth * 0.010,
+                        width: displaywidth * 0.010,
                       ),
                       Card(
                         elevation: 5,
