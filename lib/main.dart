@@ -8,7 +8,6 @@ import 'package:uireprika/screen/order.dart';
 import 'package:uireprika/screen/welcomepage.dart';
 import 'package:uireprika/screen/otppage.dart';
 import 'package:uireprika/screen/spalesh.dart';
-
 import 'firebase_options.dart';
 
 void main() async {

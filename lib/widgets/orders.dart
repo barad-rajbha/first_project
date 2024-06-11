@@ -10,17 +10,18 @@ class Orders extends StatefulWidget {
 class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
+    double displaywidth = MediaQuery.of(context).size.height;
     return Card(
       elevation: 5,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            width: 15,
+            width: displaywidth * 0.015,
           ),
           Container(
-            height: 150,
-            width: 100,
+            height: displaywidth * 0.150,
+            width: displaywidth * 0.100,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('asset/img/1.png'),
@@ -54,8 +55,8 @@ class _OrdersState extends State<Orders> {
                     Card(
                       elevation: 5,
                       child: Container(
-                        height: 40,
-                        width: 100,
+                        height: displaywidth * 0.040,
+                        width: displaywidth * 0.120,
                         child: Center(
                             child: Text(
                           'Accept',
@@ -75,8 +76,8 @@ class _OrdersState extends State<Orders> {
                     Card(
                       elevation: 5,
                       child: Container(
-                        height: 40,
-                        width: 100,
+                        height: displaywidth * 0.040,
+                        width: displaywidth * 0.120,
                         child: Center(
                             child: Text(
                           'Reject',

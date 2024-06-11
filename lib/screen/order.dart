@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uireprika/widgets/nevbar.dart';
-
 import '../widgets/orders.dart';
 
 class OrderPage extends StatefulWidget {
@@ -19,7 +17,7 @@ class _OrderPageState extends State<OrderPage> {
         title: Text('Order'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(32.0),
+        padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             SizedBox(

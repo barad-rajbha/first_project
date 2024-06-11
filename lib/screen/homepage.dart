@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    double displaywidth = MediaQuery.of(context).size.height;
     return Scaffold(
       bottomNavigationBar: nevbar(),
       appBar: AppBar(
@@ -22,12 +23,12 @@ class _HomePageState extends State<HomePage> {
               Navigator.of(context).pushNamed('order');
             },
             child: Container(
-                height: 20,
-                width: 20,
+                height: displaywidth * 0.02,
+                width: displaywidth * 0.02,
                 child: Image.asset('asset/img/bell.png')),
           ),
           SizedBox(
-            width: 10,
+            width: displaywidth * 0.01,
           )
         ],
         title: Text('Dashboard'),
@@ -41,7 +42,7 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           children: [
             Container(
-              height: 400,
+              height: displaywidth * 0.430,
               width: double.infinity,
               child: GridView(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -52,8 +53,8 @@ class _HomePageState extends State<HomePage> {
                     child: Card(
                       elevation: 5,
                       child: Container(
-                        width: 150,
-                        height: 150,
+                        width: displaywidth * 0.15,
+                        height: displaywidth * 0.15,
                         decoration: BoxDecoration(
                           color: Color(0xFFE4F2FD),
                           borderRadius: BorderRadius.circular(20),
@@ -63,8 +64,8 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              height: 75,
-                              width: 75,
+                              height: displaywidth * 0.075,
+                              width: displaywidth * 0.075,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -90,8 +91,8 @@ class _HomePageState extends State<HomePage> {
                     child: Card(
                       elevation: 5,
                       child: Container(
-                        width: 150,
-                        height: 150,
+                        width: displaywidth * 0.15,
+                        height: displaywidth * 0.15,
                         decoration: BoxDecoration(
                           color: Color(0xFFFFFDE7),
                           borderRadius: BorderRadius.circular(20),
@@ -101,8 +102,8 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              height: 75,
-                              width: 75,
+                              height: displaywidth * 0.075,
+                              width: displaywidth * 0.075,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage('asset/img/preorder.png'),
@@ -110,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: displaywidth * 0.01,
                             ),
                             Text(
                               'Pending Delivery',
@@ -129,8 +130,8 @@ class _HomePageState extends State<HomePage> {
                     child: Card(
                       elevation: 5,
                       child: Container(
-                        width: 150,
-                        height: 150,
+                        width: displaywidth * 0.15,
+                        height: displaywidth * 0.15,
                         decoration: BoxDecoration(
                           color: Color(0xFFE7F6E9),
                           borderRadius: BorderRadius.circular(20),
@@ -140,8 +141,8 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              height: 75,
-                              width: 75,
+                              height: displaywidth * 0.075,
+                              width: displaywidth * 0.075,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage('asset/img/cancel.png'),
@@ -149,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: displaywidth * 0.01,
                             ),
                             Text(
                               'Cancel Delivery',
@@ -168,8 +169,8 @@ class _HomePageState extends State<HomePage> {
                     child: Card(
                       elevation: 5,
                       child: Container(
-                        width: 150,
-                        height: 150,
+                        width: displaywidth * 0.15,
+                        height: displaywidth * 0.15,
                         decoration: BoxDecoration(
                           color: Color(0xFFFBE4EC),
                           borderRadius: BorderRadius.circular(20),
@@ -179,8 +180,8 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
-                              height: 75,
-                              width: 75,
+                              height: displaywidth * 0.075,
+                              width: displaywidth * 0.075,
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage('asset/img/return.png'),
@@ -188,7 +189,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: displaywidth * 0.01,
                             ),
                             Text(
                               'Return Delivery',
@@ -206,50 +207,50 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: displaywidth * 0.02,
             ),
             Text(
               'New Orders',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: 20,
+              height: displaywidth * 0.02,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
             Orders(),
             SizedBox(
-              height: 5,
+              height: displaywidth * 0.005,
             ),
           ],
         ),

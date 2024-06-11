@@ -134,7 +134,7 @@ class nevbarState extends State<nevbar> {
   ];
 
   List<String> listOfStrings = [
-    'Dashboard',
+    'Home',
     'Order',
     'pending',
     'profile',

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -19,6 +17,7 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     GlobalKey<FormState> globalKey = GlobalKey<FormState>();
     UserData numberdata = Provider.of<UserData>(context);
+    double displaywidth = MediaQuery.of(context).size.height;
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -32,8 +31,8 @@ class _WelcomePageState extends State<WelcomePage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: displaywidth * .03,
               ),
               Row(
                 children: [
@@ -50,17 +49,17 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 150,
+              SizedBox(
+                height: displaywidth * 0.15,
               ),
               SizedBox(
-                height: 190,
-                width: 190,
+                height: displaywidth * 0.19,
+                width: displaywidth * 0.19,
                 child: Lottie.asset('asset/json/Animation - 1717589236584.json',
                     repeat: false),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: displaywidth * 0.01,
               ),
               const Text(
                 'Welcome Back!',
@@ -69,14 +68,14 @@ class _WelcomePageState extends State<WelcomePage> {
                     fontSize: 35,
                     fontWeight: FontWeight.bold),
               ),
-              const SizedBox(
-                height: 75,
+              SizedBox(
+                height: displaywidth * 0.075,
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 20, left: 20),
                 child: Container(
                   width: double.infinity,
-                  height: 280,
+                  height: displaywidth * 0.280,
                   decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.7),
                       borderRadius:
@@ -88,32 +87,33 @@ class _WelcomePageState extends State<WelcomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const SizedBox(
-                          height: 25,
+                        SizedBox(
+                          height: displaywidth * 0.025,
                         ),
                         const Text('Phone Number'),
-                        const SizedBox(
-                          height: 5,
+                        SizedBox(
+                          height: displaywidth * 0.005,
                         ),
-                        Form(
-                          key: globalKey,
-                          child: TextFormField(
-                            validator: (vel) {
-                              if (vel!.isEmpty) {
-                                return 'Enter your number';
-                              } else if (vel.length != 10) {
-                                return 'Enter your full and proper number';
-                              }
-                              return null;
-                            },
-                            controller: numberdata.number,
-                            keyboardType: TextInputType.phone,
-                            decoration: const InputDecoration(
-                              prefixIcon: Icon(Icons.phone),
-                              hintText: 'number',
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.amber),
-                              ),
+                        // TextField(
+                        //   controller: name,
+                        // ),
+                        TextFormField(
+                          validator: (vel) {
+                            if (vel!.isEmpty) {
+                              return 'Enter your number';
+                            } else if (vel.length != 10) {
+                              return 'Enter your full and proper number';
+                            }
+                            return null;
+                          },
+                          // controller: name,
+                          controller: numberdata.number,
+                          keyboardType: TextInputType.phone,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.phone),
+                            hintText: 'number',
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.amber),
                             ),
                           ),
                         ),
@@ -128,14 +128,13 @@ class _WelcomePageState extends State<WelcomePage> {
                                         (FirebaseAuthException ex) {},
                                     codeSent: (String verificatoinid,
                                         int? resendtoken) {
-                                          Navigator.pushReplacement(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => OtpPage(
-                                                  verificationId:
-                                                      verificatoinid),
-                                            ),
-                                          );
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => OtpPage(
+                                              verificationId: verificatoinid),
+                                        ),
+                                      );
                                     },
                                     codeAutoRetrievalTimeout:
                                         (String verificatoinId) {},
@@ -164,7 +163,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             });
                           },
                           child: Container(
-                            height: 65,
+                            height: displaywidth * 0.065,
                             width: double.infinity,
                             decoration: BoxDecoration(
                                 color: Colors.green,

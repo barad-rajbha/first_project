@@ -20,6 +20,7 @@ class _OtpPageState extends State<OtpPage> {
   @override
   Widget build(BuildContext context) {
     var otps = Provider.of<UserData>(context);
+    double displaywidth = MediaQuery.of(context).size.height;
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -33,8 +34,8 @@ class _OtpPageState extends State<OtpPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(
-                height: 20,
+               SizedBox(
+                height: displaywidth * 0.02,
               ),
               Row(
                 children: [
@@ -50,17 +51,17 @@ class _OtpPageState extends State<OtpPage> {
                   )
                 ],
               ),
-              const SizedBox(
-                height: 150,
+              SizedBox(
+                height: displaywidth * .150,
               ),
               SizedBox(
-                height: 190,
-                width: 190,
+                height: displaywidth * 0.190,
+                width: displaywidth * 0.190,
                 child: Lottie.asset('asset/json/Animation - 1717590142914.json',
                     repeat: false),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: displaywidth * 0.001,
               ),
               const Text(
                 'SUBMIT OTP!',
@@ -69,14 +70,14 @@ class _OtpPageState extends State<OtpPage> {
                     fontSize: 35,
                     fontWeight: FontWeight.bold),
               ),
-              const SizedBox(
-                height: 75,
+              SizedBox(
+                height: displaywidth * 0.075,
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 20, left: 20),
                 child: Container(
                   width: double.infinity,
-                  height: 280,
+                  height: displaywidth * 0.280,
                   decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.7),
                       borderRadius: const BorderRadius.all(Radius.circular(40))),
@@ -86,20 +87,19 @@ class _OtpPageState extends State<OtpPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       // mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 25,
+                      children: [ SizedBox(
+                          height: displaywidth * 0.025,
                         ),
                         const Text('Enter Otp'),
-                        const SizedBox(
-                          height: 25,
+                        SizedBox(
+                          height: displaywidth * 0.025,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
-                              height: 40,
-                              width: 40,
+                              height: displaywidth * 0.040,
+                              width: displaywidth * 0.040,
                               child: TextField(
                                 onChanged: (value) {
                                   FocusScope.of(context).nextFocus();
@@ -122,8 +122,8 @@ class _OtpPageState extends State<OtpPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 40,
-                              width: 40,
+                              height: displaywidth * 0.040,
+                              width: displaywidth * 0.040,
                               child: TextField(
                                 onChanged: (value) {
                                   FocusScope.of(context).nextFocus();
@@ -146,8 +146,8 @@ class _OtpPageState extends State<OtpPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 40,
-                              width: 40,
+                              height: displaywidth * 0.040,
+                              width: displaywidth * 0.040,
                               child: TextField(
                                 onChanged: (value) {
                                   FocusScope.of(context).nextFocus();
@@ -170,8 +170,8 @@ class _OtpPageState extends State<OtpPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 40,
-                              width: 40,
+                              height: displaywidth * 0.040,
+                              width: displaywidth * 0.040,
                               child: TextField(
                                 onChanged: (value) {
                                   FocusScope.of(context).nextFocus();
@@ -194,8 +194,8 @@ class _OtpPageState extends State<OtpPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 40,
-                              width: 40,
+                              height: displaywidth * 0.040,
+                              width: displaywidth * 0.040,
                               child: TextField(
                                 onChanged: (value) {
                                   FocusScope.of(context).nextFocus();
@@ -218,8 +218,8 @@ class _OtpPageState extends State<OtpPage> {
                               ),
                             ),
                             SizedBox(
-                              height: 40,
-                              width: 40,
+                              height: displaywidth * 0.040,
+                              width: displaywidth * 0.040,
                               child: TextField(
                                 // onChanged: (value) {
                                 //   FocusScope.of(context).nextFocus();
@@ -297,7 +297,7 @@ class _OtpPageState extends State<OtpPage> {
                             //     .pushReplacementNamed('account');
                           },
                           child: Container(
-                            height: 65,
+                            height: displaywidth * 0.065,
                             width: double.infinity,
                             decoration: BoxDecoration(
                                 color: Colors.green,

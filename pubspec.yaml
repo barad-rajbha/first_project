@@ -43,7 +43,7 @@ dependencies:
   firebase_auth:
   cloud_firestore:
   flutter_launcher_icons:
-  custom_navigation_bar: ^0.8.2
+  firebase_storage:
 
 dev_dependencies:
   flutter_test:
