@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
-
 import '../firebase_helper/helper.dart';
 
 class AccountPage extends StatefulWidget {
