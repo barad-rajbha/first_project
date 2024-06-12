@@ -16,6 +16,7 @@ class UserData extends ChangeNotifier {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController address = TextEditingController();
+  TextEditingController pincode = TextEditingController();
   TextEditingController city = TextEditingController();
   TextEditingController state = TextEditingController();
 

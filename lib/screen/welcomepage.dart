@@ -15,7 +15,6 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> globalKey = GlobalKey<FormState>();
     UserData numberdata = Provider.of<UserData>(context);
     double displaywidth = MediaQuery.of(context).size.height;
     return Container(
@@ -106,6 +105,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             }
                             return null;
                           },
+                          maxLength: 10,
                           // controller: name,
                           controller: numberdata.number,
                           keyboardType: TextInputType.phone,
@@ -140,27 +140,29 @@ class _WelcomePageState extends State<WelcomePage> {
                                         (String verificatoinId) {},
                                     phoneNumber:
                                         '+91 ${numberdata.number.text.toString()}')
-                                .then((value) {
-                              if (globalKey.currentState!.validate()) {
-                                globalKey.currentState!.save();
-
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    behavior: SnackBarBehavior.floating,
-                                    content: Text('OTP send success fully'),
-                                    backgroundColor: Colors.green,
-                                  ),
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    behavior: SnackBarBehavior.floating,
-                                    content: Text('ERROR'),
-                                    backgroundColor: Colors.red,
-                                  ),
-                                );
-                              }
-                            });
+                                .then(
+                              (value) {
+                                (numberdata.number.text.length == 10)
+                                    ? ScaffoldMessenger.of(context)
+                                        .showSnackBar(
+                                        const SnackBar(
+                                          behavior: SnackBarBehavior.floating,
+                                          content:
+                                              Text('OTP send success fully'),
+                                          backgroundColor: Colors.green,
+                                        ),
+                                      )
+                                    : ScaffoldMessenger.of(context)
+                                        .showSnackBar(
+                                        const SnackBar(
+                                          behavior: SnackBarBehavior.floating,
+                                          content:
+                                              Text('Fill proper detail...'),
+                                          backgroundColor: Colors.red,
+                                        ),
+                                      );
+                              },
+                            );
                           },
                           child: Container(
                             height: displaywidth * 0.065,

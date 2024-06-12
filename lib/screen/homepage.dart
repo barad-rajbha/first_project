@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uireprika/widgets/nevbar.dart';
+import '../widgets/drawer.dart';
 import '../widgets/orders.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,11 +32,8 @@ class _HomePageState extends State<HomePage> {
           )
         ],
         title: Text('Dashboard'),
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-        ),
       ),
+      drawer: DrawerData(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(

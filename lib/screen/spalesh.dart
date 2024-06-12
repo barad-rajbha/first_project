@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -15,7 +16,9 @@ class _SpaleshPageState extends State<SpaleshPage> {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacementNamed('/');
+      (FirebaseAuth.instance.currentUser != null)
+          ? Navigator.of(context).pushReplacementNamed('home')
+          : Navigator.of(context).pushReplacementNamed('/');
     });
   }
 
