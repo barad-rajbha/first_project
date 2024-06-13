@@ -1,6 +1,7 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserData extends ChangeNotifier {
@@ -19,6 +20,11 @@ class UserData extends ChangeNotifier {
   TextEditingController pincode = TextEditingController();
   TextEditingController city = TextEditingController();
   TextEditingController state = TextEditingController();
+  String orderadd = '📍 dr.yagnik road rajkot, 360001';
+  String companyname='Puma';
+  String detail='Puma shoes 8';
+  String time='03-jan-2022';
+  bool orderAccept = false;
 
   dynamic galleryimg() async {
     final ImagePicker picker = ImagePicker();
@@ -50,5 +56,10 @@ class UserData extends ChangeNotifier {
     imageUrl = await uploadTask.ref.getDownloadURL();
 
     print(imageUrl);
+  }
+
+  orderAccepted() {
+    orderAccept = true;
+    notifyListeners();
   }
 }

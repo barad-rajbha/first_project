@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../controller/controller.dart';
 
 class Orders extends StatefulWidget {
   const Orders({super.key});
@@ -10,6 +13,7 @@ class Orders extends StatefulWidget {
 class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
+    UserData userData = Provider.of<UserData>(context);
     double displaywidth = MediaQuery.of(context).size.height;
     return Card(
       elevation: 5,
@@ -53,23 +57,30 @@ class _OrdersState extends State<Orders> {
                   ),
                   Row(
                     children: [
-                      Card(
-                        elevation: 5,
-                        child: Container(
-                          height: displaywidth * 0.040,
-                          width: displaywidth * 0.110,
-                          child: Center(
-                            child: Text(
-                              'Accept',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  letterSpacing: 1,
-                                  fontSize: 15),
+                      InkWell(
+                        onTap: (){
+                          userData.orderAccepted();
+                          print('*******');
+                          print(userData.orderAccept);
+                        },
+                        child: Card(
+                          elevation: 5,
+                          child: Container(
+                            height: displaywidth * 0.040,
+                            width: displaywidth * 0.110,
+                            child: Center(
+                              child: Text(
+                                'Accept',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    letterSpacing: 1,
+                                    fontSize: 15),
+                              ),
                             ),
+                            decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(10)),
                           ),
-                          decoration: BoxDecoration(
-                              color: Colors.green,
-                              borderRadius: BorderRadius.circular(10)),
                         ),
                       ),
                       SizedBox(

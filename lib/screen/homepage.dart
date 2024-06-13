@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
         actions: [
           InkWell(
             onTap: () {
-              Navigator.of(context).pushNamed('order');
             },
             child: Container(
                 height: displaywidth * 0.02,

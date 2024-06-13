@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
 import 'package:uireprika/screen/accountpage.dart';
 import 'package:uireprika/screen/homepage.dart';
-import 'package:uireprika/screen/order.dart';
+import 'package:uireprika/screen/orderpage.dart';
 import 'package:uireprika/screen/welcomepage.dart';
 import 'package:uireprika/screen/otppage.dart';
 import 'package:uireprika/screen/spalesh.dart';

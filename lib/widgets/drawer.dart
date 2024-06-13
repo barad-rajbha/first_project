@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../controller/controller.dart';
 
 class DrawerData extends StatefulWidget {
@@ -12,7 +11,6 @@ class DrawerData extends StatefulWidget {
 }
 
 class _DrawerDataState extends State<DrawerData> {
-
   @override
   Widget build(BuildContext context) {
     UserData data = Provider.of<UserData>(context);
@@ -25,18 +23,21 @@ class _DrawerDataState extends State<DrawerData> {
             ),
             InkWell(
               onTap: () {
-                FirebaseAuth.instance.signOut().then(
-                    (value) {
-                      Navigator.of(context).pushReplacementNamed('/');
-                      data.name.clear();
-                      data.number.clear();
-                      data.email.clear();
-                      data.address.clear();
-                      data.city.clear();
-                      data.pincode.clear();
-                      data.state.clear();
-                      data.imageFile == null;
-                    } );
+                FirebaseAuth.instance.signOut().then((value) {
+                  data.name.clear();
+                  data.number.clear();
+                  data.email.clear();
+                  data.address.clear();
+                  data.city.clear();
+                  data.pincode.clear();
+                  data.state.clear();
+                  data.imageFile = null;
+                  data.imageUrl = '';
+                  data.orderAccept = false;
+                  print(
+                      '**************************${data.imageFile}***********************************');
+                  Navigator.of(context).pushReplacementNamed('/');
+                });
               },
               child: Card(
                 elevation: 5,
@@ -44,7 +45,7 @@ class _DrawerDataState extends State<DrawerData> {
                   height: 50,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Color(0xFF672635),
+                    color: Color(0xFFA22641),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(

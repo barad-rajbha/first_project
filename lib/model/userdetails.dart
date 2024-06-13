@@ -3,6 +3,7 @@ class User {
   String email;
   String number;
   String address;
+  String pincode;
   String city;
   String state;
 
@@ -11,6 +12,7 @@ class User {
     required this.email,
     required this.number,
     required this.address,
+    required this.pincode,
     required this.city,
     required this.state,
   });
@@ -21,6 +23,7 @@ class User {
       'email': email,
       'number': number,
       'address': address,
+      'pincode': pincode,
       'city': city,
       'state': state,
     };

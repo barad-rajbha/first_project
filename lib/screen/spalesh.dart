@@ -17,7 +17,7 @@ class _SpaleshPageState extends State<SpaleshPage> {
     super.initState();
     Timer(Duration(seconds: 3), () {
       (FirebaseAuth.instance.currentUser != null)
-          ? Navigator.of(context).pushReplacementNamed('home')
+          ? Navigator.of(context).pushReplacementNamed('order')
           : Navigator.of(context).pushReplacementNamed('/');
     });
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
-import '../firebase_helper/helper.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -13,7 +12,7 @@ class AccountPage extends StatefulWidget {
 class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    UserData providerdata = Provider.of<UserData>(context);
+    UserData providerdata = Provider.of<UserData>(context, listen: false);
     double displaywidth = MediaQuery.of(context).size.height;
     return Container(
       decoration: const BoxDecoration(
@@ -298,9 +297,8 @@ class _AccountPageState extends State<AccountPage> {
                     ),
                     const Spacer(),
                     InkWell(
-                      onTap: () async {
-                        FireStoreData.fireStoreData.addData(context);
-                        Navigator.of(context).pushReplacementNamed('home');
+                      onTap: () {
+                        Navigator.of(context).pushNamed('order');
                       },
                       child: Container(
                         height: displaywidth * 0.065,

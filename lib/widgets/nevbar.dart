@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../screen/homepage.dart';
-import '../screen/order.dart';
+import '../screen/orderpage.dart';
 import '../screen/pending.dart';
 import '../screen/profilepage.dart';
 
