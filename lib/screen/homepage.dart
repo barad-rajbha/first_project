@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uireprika/widgets/nevbar.dart';
+import '../utils/util.dart';
 import '../widgets/drawer.dart';
 import '../widgets/orders.dart';
 
@@ -19,8 +20,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         actions: [
           InkWell(
-            onTap: () {
-            },
+            onTap: () {},
             child: Container(
                 height: displaywidth * 0.02,
                 width: displaywidth * 0.02,
@@ -212,42 +212,31 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: displaywidth * 0.02,
             ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
-            Orders(),
-            SizedBox(
-              height: displaywidth * 0.005,
-            ),
+            Container(
+              child: Column(
+                children: orderslist.map(
+                  (e) {
+                    String img = e['image'];
+                    String com = e['company'];
+                    String add = e['address'];
+                    String time = e['time'];
+                    bool accept = e['accept'];
+                    int orderid = e['orderid'];
+                    return (accept == false)
+                        ? Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Orders(
+                                img: img,
+                                com: com,
+                                add: add,
+                                time: time,
+                                accept: accept,orderid: orderid),
+                          )
+                        : Container();
+                  },
+                ).toList(),
+              ),
+            )
           ],
         ),
       ),

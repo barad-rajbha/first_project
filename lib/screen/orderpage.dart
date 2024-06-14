@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uireprika/controller/controller.dart';
+import '../utils/util.dart';
 import '../widgets/orders.dart';
 
 class OrderPage extends StatefulWidget {
@@ -14,13 +15,6 @@ class OrderPage extends StatefulWidget {
 class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
-    DateTime date = DateTime.now();
-    String yearref = date.year.toString();
-    String month = date.month.toString();
-    String datetime =
-        '${date.millisecond}-${date.microsecond}-${date.second}-${date.day}-${date.month}';
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-    UserData userData = Provider.of<UserData>(context);
     double displaywidth = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
@@ -32,42 +26,7 @@ class _OrderPageState extends State<OrderPage> {
         children: [
           InkWell(
             onTap: () async {
-              if (userData.name == '' ||
-                  userData.number == '' ||
-                  userData.email == '' ||
-                  userData.address == '' ||
-                  userData.pincode == '' ||
-                  userData.city == '' ||
-                  userData.state == '') {
-                print('**************************************');
-              } else {
-                await firestore
-                    .collection('AllUsersDelivery')
-                    .doc('+91${userData.number.text}')
-                    .collection(yearref)
-                    .doc(month)
-                    .collection('orders')
-                    .doc(datetime)
-                    .set({
-                  'name': userData.name.text.toString(),
-                  'number': userData.number.text.toString(),
-                  'email': userData.email.text.toString(),
-                  'address': userData.address.text.toString(),
-                  'pin code': userData.pincode.text.toString(),
-                  'city': userData.city.text.toString(),
-                  'state': userData.state.text.toString(),
-                  'image': userData.imageUrl,
-                  'order': {
-                    'order company': userData.companyname.toString(),
-                    'order address': userData.orderadd.toString(),
-                    'order detail': userData.detail.toString(),
-                    'order time': userData.time.toString(),
-                  },
-                }).then(
-                  (value) =>
-                      Navigator.of(context).pushReplacementNamed('home'),
-                );
-              }
+              Navigator.of(context).pushNamed('home');
             },
             child: Card(
               elevation: 5,
@@ -92,12 +51,28 @@ class _OrderPageState extends State<OrderPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            (userData.orderAccept == true) ? Container() : Orders(),
-          ],
+          children: orderslist.map(
+            (e) {
+              String img = e['image'];
+              String com = e['company'];
+              String add = e['address'];
+              String time = e['time'];
+              bool accept = e['accept'];
+              int orderid = e['orderid'];
+              return (accept == false)
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Orders(
+                          img: img,
+                          com: com,
+                          add: add,
+                          time: time,
+                          accept: accept,
+                          orderid: orderid),
+                    )
+                  : Container();
+            },
+          ).toList(),
         ),
       ),
     );

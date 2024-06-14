@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="Super Delivery"
+        android:label="FD MART DELIVERY"
         android:name="${applicationName}"
         android:icon="@mipmap/super_delivery">
         <activity

@@ -1,10 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../controller/controller.dart';
+import '../utils/util.dart';
 
 class Orders extends StatefulWidget {
-  const Orders({super.key});
+  String img;
+  String com;
+  String add;
+  String time;
+  bool accept;
+  int orderid;
+
+  Orders({
+    super.key,
+    required this.img,
+    required this.com,
+    required this.add,
+    required this.time,
+    required this.accept,
+    required this.orderid,
+  });
 
   @override
   State<Orders> createState() => _OrdersState();
@@ -13,6 +30,12 @@ class Orders extends StatefulWidget {
 class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
+    DateTime date = DateTime.now();
+    String yearref = date.year.toString();
+    String month = date.month.toString();
+    String datetime =
+        '${date.millisecond}-${date.microsecond}-${date.second}-${date.day}-${date.month}';
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
     UserData userData = Provider.of<UserData>(context);
     double displaywidth = MediaQuery.of(context).size.height;
     return Card(
@@ -29,7 +52,7 @@ class _OrdersState extends State<Orders> {
               width: displaywidth * 0.100,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('asset/img/1.png'),
+                  image: AssetImage(widget.img),
                 ),
               ),
             ),
@@ -45,11 +68,11 @@ class _OrdersState extends State<Orders> {
                     height: displaywidth * 0.005,
                   ),
                   Text(
-                    'Puma Shoes',
+                    widget.com,
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    '📍 dr.yagnik road rajkot, 360001\n⏱️ 03-jan-2022',
+                    '${widget.add}\n⏱️ ${widget.time}',
                     style: TextStyle(fontSize: 15),
                   ),
                   SizedBox(
@@ -58,10 +81,41 @@ class _OrdersState extends State<Orders> {
                   Row(
                     children: [
                       InkWell(
-                        onTap: (){
-                          userData.orderAccepted();
-                          print('*******');
-                          print(userData.orderAccept);
+                        onTap: () async{
+                          if (userData.name == '' ||
+                              userData.number == '' ||
+                              userData.email == '' ||
+                              userData.address == '' ||
+                              userData.pincode == '' ||
+                              userData.city == '' ||
+                              userData.state == '') {
+                            print('**************************************');
+                          } else {
+                            await firestore
+                                .collection('AllUsersDelivery')
+                                .doc('+91${userData.number.text}')
+                                .collection(yearref)
+                                .doc(month)
+                                .collection('orders')
+                                .doc(datetime)
+                                .set({
+                              'name': userData.name.text.toString(),
+                              'number': userData.number.text.toString(),
+                              'email': userData.email.text.toString(),
+                              'address': userData.address.text.toString(),
+                              'pin code': userData.pincode.text.toString(),
+                              'city': userData.city.text.toString(),
+                              'state': userData.state.text.toString(),
+                              'image': userData.imageUrl,
+                              'order': {
+                                'order company': widget.com,
+                                'order address': widget.add,
+                                'order time': widget.time,
+                                'order img': widget.img,
+                              },
+                            });
+                          }
+                          orderslist.removeAt(widget.orderid);
                         },
                         child: Card(
                           elevation: 5,
